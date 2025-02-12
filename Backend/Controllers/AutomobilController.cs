@@ -1,8 +1,9 @@
 ﻿
 using Backend.Data;
+using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Automobil.Controllers
+namespace Backend.Controllers
 
 {
     [ApiController]
@@ -76,11 +77,7 @@ namespace Automobil.Controllers
                 }
 
                 // rucni mapping - kasnije automatika
-                automobilBaza.Naziv = automobil.Naziv;
-                automobilBaza.Trajanje = automobil.Trajanje;
-                automobilBaza.CijenaSmjera = automobil.CijenaSmjera;
-                automobilBaza.vaucer = automobil.vaucer;
-                automobilBaza.IzvodiSeOd = automobil.IzvodiSeOd;
+                // tu nastavi
 
                 _context.Automobili.Update(automobilBaza);
                 _context.SaveChanges();
@@ -102,7 +99,7 @@ namespace Automobil.Controllers
             }
             try
             {
-                var automobil = _context.Automobil.Find(sifra);
+                var automobil = _context.Automobili.Find(sifra);
                 if (automobil == null)
                 {
                     return NotFound(new { poruka = $"Automobil s šifrom {sifra} ne postoji" });

@@ -12,7 +12,7 @@ namespace Backend.Data
         }
 
 
-        public DbSet<AutomobilContext> Automobili { get; set; } 
+        public DbSet<Automobil> Automobili { get; set; } 
 
     }
 }
