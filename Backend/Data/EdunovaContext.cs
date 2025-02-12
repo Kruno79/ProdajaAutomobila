@@ -9,6 +9,6 @@ namespace EdunovaAPP.Data
         {
         }
 
-        public DbSet<Automobil> Smjerovi { get; set; }
+        public DbSet<Automobil> Automobili { get; set; }
     }
 }

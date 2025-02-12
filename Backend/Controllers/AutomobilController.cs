@@ -1,4 +1,5 @@
-﻿using ProdajaAutomobila.Data;
+﻿
+using Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EdunovaAPP.Controllers
@@ -21,7 +22,7 @@ namespace EdunovaAPP.Controllers
         {
             try
             {
-                return Ok(_context.Automobili.ToList());
+                return Ok(_context.Automobili);
             }
             catch (Exception e)
             {
@@ -36,7 +37,7 @@ namespace EdunovaAPP.Controllers
                 var smjer = _context.Automobili.Find(id);
                 if (smjer == null)
                 {
-                    return NotFound($"Smjer s sifrom {id} ne postoji");
+                    return NotFound($"Automobil s sifrom {id} ne postoji");
                 }
                 return Ok(smjer);
             }
@@ -47,20 +48,7 @@ namespace EdunovaAPP.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult Post(Smjer smjer)
-        {
-            try
-            {
-                _context.Smjerovi.Add(smjer);
-                _context.SaveChanges();
-                return StatusCode(StatusCodes.Status201Created, smjer);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
-        }
+       
 
     }
 }

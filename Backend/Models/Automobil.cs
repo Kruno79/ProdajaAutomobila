@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EdunovaAPP.Models
+namespace Backend.Models
 {
     public class Automobil : Entitet
     {
@@ -8,11 +8,11 @@ namespace EdunovaAPP.Models
 
         public string Model { get; set; } = "";
 
-        public string Motor { get; set; }
+        public string? Motor { get; set; }
 
-        public string Vin { get; set; } 
+        public string? Vin { get; set; } 
 
-        public int? Godište { get; set; }
+        public int? Godiste { get; set; }
 
         public int? Kilometraza { get; set; }
 
