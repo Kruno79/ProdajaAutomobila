@@ -77,12 +77,12 @@ namespace Automobil.Controllers
 
                 // rucni mapping - kasnije automatika
                 automobilBaza.Naziv = automobil.Naziv;
-                automobilBaza.Trajanje = smjer.Trajanje;
-                automobilBaza.CijenaSmjera = smjer.CijenaSmjera;
-                automobilBaza.vaucer = smjer.vaucer;
-                automobilBaza.IzvodiSeOd = smjer.IzvodiSeOd;
+                automobilBaza.Trajanje = automobil.Trajanje;
+                automobilBaza.CijenaSmjera = automobil.CijenaSmjera;
+                automobilBaza.vaucer = automobil.vaucer;
+                automobilBaza.IzvodiSeOd = automobil.IzvodiSeOd;
 
-                _context.Smjerovi.Update(automobilBaza);
+                _context.Automobili.Update(automobilBaza);
                 _context.SaveChanges();
                 return Ok(automobilBaza);
             }
@@ -102,12 +102,12 @@ namespace Automobil.Controllers
             }
             try
             {
-                var smjer = _context.Smjerovi.Find(sifra);
-                if (smjer == null)
+                var automobil = _context.Automobil.Find(sifra);
+                if (automobil == null)
                 {
-                    return NotFound(new { poruka = $"Smjer s šifrom {sifra} ne postoji" });
+                    return NotFound(new { poruka = $"Automobil s šifrom {sifra} ne postoji" });
                 }
-                _context.Smjerovi.Remove(smjer);
+                _context.Automobili.Remove(automobil);
                 _context.SaveChanges();
                 return NoContent();
             }
