@@ -2,7 +2,7 @@
 using Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EdunovaAPP.Controllers
+namespace Automobil.Controllers
 
 {
     [ApiController]
@@ -10,9 +10,9 @@ namespace EdunovaAPP.Controllers
     public class AutomobilController : ControllerBase
     {
 
-        private readonly EdunovaContext _context;
+        private readonly AutomobilContext _context;
 
-        public AutomobilController(EdunovaContext context)
+        public AutomobilController(AutomobilContext context)
         {
             _context = context;
         }
@@ -34,12 +34,12 @@ namespace EdunovaAPP.Controllers
         {
             try
             {
-                var smjer = _context.Automobili.Find(id);
-                if (smjer == null)
+                var automobil = _context.Automobili.Find(id);
+                if (automobil == null)
                 {
                     return NotFound($"Automobil s sifrom {id} ne postoji");
                 }
-                return Ok(smjer);
+                return Ok(automobil);
             }
             catch (Exception e)
             {
