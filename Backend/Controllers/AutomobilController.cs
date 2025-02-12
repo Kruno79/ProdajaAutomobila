@@ -78,6 +78,11 @@ namespace Backend.Controllers
 
                 // rucni mapping - kasnije automatika
                 // tu nastavi
+                automobilBaza.Marka = automobil.Marka;
+                automobilBaza.Model = automobil.Model;
+                automobilBaza.Motor = automobil.Motor;
+                automobilBaza.Vin = automobil.Vin;
+                automobilBaza.Godiste = automobil.Godiste;
 
                 _context.Automobili.Update(automobilBaza);
                 _context.SaveChanges();
