@@ -47,8 +47,78 @@ namespace Automobil.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Post(Automobil automobil)
+        {
+            try
+            {
+                _context.Automobili.Add(automobil);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, automobil);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
 
-       
+
+        [HttpPut("{sifra:int}")]
+        public IActionResult Put(int sifra, Automobil automobil)
+        {
+            try
+            {
+
+                var automobilBaza = _context.Automobili.Find(sifra);
+                if (automobilBaza == null)
+                {
+                    return NotFound(new { poruka = $"Automobil s šifrom {sifra} ne postoji" });
+                }
+
+                // rucni mapping - kasnije automatika
+                automobilBaza.Naziv = automobil.Naziv;
+                automobilBaza.Trajanje = smjer.Trajanje;
+                automobilBaza.CijenaSmjera = smjer.CijenaSmjera;
+                automobilBaza.vaucer = smjer.vaucer;
+                automobilBaza.IzvodiSeOd = smjer.IzvodiSeOd;
+
+                _context.Smjerovi.Update(automobilBaza);
+                _context.SaveChanges();
+                return Ok(automobilBaza);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
+
+        [HttpDelete("{sifra:int}")]
+        public IActionResult Delete(int sifra)
+        {
+            if (sifra <= 0)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new { poruka = "Šifra mora biti pozitivan broj" });
+            }
+            try
+            {
+                var smjer = _context.Smjerovi.Find(sifra);
+                if (smjer == null)
+                {
+                    return NotFound(new { poruka = $"Smjer s šifrom {sifra} ne postoji" });
+                }
+                _context.Smjerovi.Remove(smjer);
+                _context.SaveChanges();
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
+
+
 
     }
 }
