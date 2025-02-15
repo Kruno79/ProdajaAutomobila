@@ -1,11 +1,14 @@
-﻿use master;
-go
-drop database if exists prodaja;
-go
-create database prodaja collate Croatian_CI_AS;
-go
-use prodaja;
-go
+﻿SELECT name, collation_name FROM sys.databases;
+GO
+ALTER DATABASE db_ab2d4d_prodajaautomobila SET SINGLE_USER WITH
+ROLLBACK IMMEDIATE;
+GO
+ALTER DATABASE db_ab2d4d_prodajaautomobila COLLATE Croatian_CI_AS;
+GO
+ALTER DATABASE db_ab2d4d_prodajaautomobila SET MULTI_USER;
+GO
+SELECT name, collation_name FROM sys.databases;
+GO
 
 CREATE TABLE automobili (
   sifra int not null primary key identity(1,1),
