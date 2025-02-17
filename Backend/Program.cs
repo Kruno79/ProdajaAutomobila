@@ -14,10 +14,20 @@ builder.Services.AddSwaggerGen();
 
 
 // dodavanje db contexta
-builder.Services.AddDbContext<AutomobilContext>(o => {
+builder.Services.AddDbContext<AutomobilContext>(o =>
+{
     o.UseSqlServer(builder.Configuration.GetConnectionString("AutomobilContext"));
 });
 
+builder.Services.AddCors(o =>
+{
+    o.AddPolicy("CorsPolicy", b =>
+    {
+        b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+
+
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,5 +54,8 @@ app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
 
+app.UseCors("CorsPolicy");
+
 app.Run();
+
 
