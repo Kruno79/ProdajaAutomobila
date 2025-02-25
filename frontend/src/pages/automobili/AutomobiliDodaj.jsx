@@ -25,55 +25,70 @@ export default function AutomobiliDodaj(){
 
         dodaj(
             {
-                naziv: podaci.get('naziv'),
-                markaAutomobila: podaci.get('naziv'),
-                modelAutomobila: podaci.get('naziv'),
-                motorAutomobila: podaci.get('naziv'),
-                vinAutomobila: podaci.get('naziv'),
-                markaAutomobila: parseFloat(podaci.get('markaAutomobila')),
-                izvodiSeOd: moment.utc(podaci.get('izvodiSeOd')),
-                vaucer: podaci.get('vaucer')=='on' ? true : false
+                marka: podaci.get('marka'),
+                model: podaci.get('model'),
+               
+                motor: podaci.get('motor'),
+                vin: podaci.get('vin'),
+                godiste: podaci.get('godiste'),
+                kilometraza: podaci.get('kilometraza'),
+            
+                
+               
+             
             }
         );
     }
 
     return(
     <>
-    Dodavanje smjera
+    Dodavanje automobila
     <Form onSubmit={odradiSubmit}>
 
-        <Form.Group controlId="naziv">
-            <Form.Label>Naziv</Form.Label>
-            <Form.Control type="text" name="naziv" required />
+        <Form.Group controlId="marka">
+            <Form.Label>Marka</Form.Label>
+            <Form.Control type="text" name="marka" required />
         </Form.Group>
 
-        <Form.Group controlId="cijenaSmjera">
-            <Form.Label>Cijena</Form.Label>
-            <Form.Control type="number" name="cijenaSmjera" step={0.01} />
+        <Form.Group controlId="model">
+            <Form.Label>Model</Form.Label>
+            <Form.Control type="text" name="model" required />
         </Form.Group>
 
-        <Form.Group controlId="izvodiSeOd">
-            <Form.Label>Izvodi se od</Form.Label>
-            <Form.Control type="date" name="izvodiSeOd" />
+        <Form.Group controlId="motor">
+            <Form.Label>Motor</Form.Label>
+            <Form.Control type="text" name="motor" required />
         </Form.Group>
 
-
-        <Form.Group controlId="vaucer">
-            <Form.Check label="Vaučer" name="vaucer" />
+        <Form.Group controlId="vin">
+            <Form.Label>Vin</Form.Label>
+            <Form.Control type="text" name="vin" required />
         </Form.Group>
+
+        <Form.Group controlId="godiste">
+            <Form.Label>Godiste</Form.Label>
+            <Form.Control type="text" name="godiste" required />
+        </Form.Group>
+
+        <Form.Group controlId="kilometraza">
+            <Form.Label>Kilometraza</Form.Label>
+            <Form.Control type="text" name="kilometraza" required />
+        </Form.Group>
+
+    
 
         <hr/>
 
         <Row>
             <Col xs={6} sm={6} md={3} lg={2} xl={6} xxl={6}>
                 <Link
-                to={RouteNames.SMJER_PREGLED}
+                to={RouteNames.AUTOMOBIL_PREGLED}
                 className="btn btn-danger siroko"
                 >Odustani</Link>
             </Col>
             <Col xs={6} sm={6} md={9} lg={10} xl={6} xxl={6}>
                 <Button variant="success" type="submit" className="siroko">
-                    Dodaj smjer
+                    Dodaj AUTOMOBIL
                 </Button>
             </Col>
         </Row>

@@ -6,7 +6,7 @@ import AutomobilService from "../../services/AutomobilService";
 import { useEffect, useState } from "react";
 
 
-export default function SmjeroviPromjena(){
+export default function AutomobiliPromjena(){
 
     const navigate = useNavigate();
     const [automobil,setAutomobil] = useState({});
@@ -21,7 +21,7 @@ export default function SmjeroviPromjena(){
         }
         
         setAutomobil(odgovor)
-        setVaucer(odgovor.vaucer)
+        //setVaucer(odgovor.vaucer)
     }
 
     useEffect(()=>{
@@ -47,7 +47,7 @@ export default function SmjeroviPromjena(){
                 naziv: podaci.get('naziv'),
                 cijenaAutomobil: parseFloat(podaci.get('cijenaAutomobila')),
                 izvodiSeOd: moment.utc(podaci.get('izvodiSeOd')),
-                vaucer: podaci.get('vaucer')=='on' ? true : false
+                //vaucer: podaci.get('vaucer')=='on' ? true : false
             }
         );
     }
@@ -76,11 +76,7 @@ export default function SmjeroviPromjena(){
         </Form.Group>
 
 
-        <Form.Group controlId="vaucer">
-            <Form.Check label="Vaučer" name="vaucer" 
-                onChange={(e)=>setVaucer(e.target.checked)}
-                checked={vaucer}  />
-            </Form.Group>
+        
         <hr/>
 
         <Row>

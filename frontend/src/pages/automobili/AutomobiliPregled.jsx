@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import SmjerService from "../../services/SmjerService"
+import AutomobilService from "../../services/AutomobilService"
 import { Button, Table } from "react-bootstrap";
 import { NumericFormat } from "react-number-format";
 import moment from "moment";
@@ -8,19 +8,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 
 
-export default function SmjeroviPregled(){
+export default function AutomobiliPregled(){
 
-    const[smjerovi, setSmjerovi] = useState();
+    const[automobili, setAutomobili] = useState();
     const navigate = useNavigate();
 
-    async function dohvatiSmjerove(){
-        const odgovor = await SmjerService.get()
-        setSmjerovi(odgovor)
+    async function dohvatiAutomobile(){
+        const odgovor = await AutomobilService.get()
+        setAutomobili(odgovor)
     }
 
     // hooks (kuka) se izvodi prilikom dolaska na stranicu Smjerovi
     useEffect(()=>{
-        dohvatiSmjerove();
+        dohvatiAutomobile();
     },[])
 
 
@@ -47,25 +47,25 @@ export default function SmjeroviPregled(){
         if(!confirm('Sigurno obrisati')){
             return;
         }
-        brisanjeSmjera(sifra);
+        brisanjeAutomobila(sifra);
     }
 
-    async function brisanjeSmjera(sifra) {
-        const odgovor = await SmjerService.obrisi(sifra);
+    async function brisanjeAutomobila(sifra) {
+        const odgovor = await AutomobilService.obrisi(sifra);
         if(odgovor.greska){
             alert(odgovor.poruka);
             return;
         }
-        dohvatiSmjerove();
+        dohvatiAutomobile();
     }
 
 
     return(
         <>
         <Link
-        to={RouteNames.SMJER_NOVI}
+        to={RouteNames.AUTOMOBIL_NOVI}
         className="btn btn-success siroko"
-        >Dodaj novi smjer</Link>
+        >Dodaj novi automobil</Link>
         <Table striped bordered hover responsive>
             <thead>
                 <tr>
@@ -79,33 +79,33 @@ export default function SmjeroviPregled(){
                 </tr>
             </thead>
             <tbody>
-                {smjerovi && smjerovi.map((smjer,index)=>(
+                {automobili && automobili.map((automobil,index)=>(
                     <tr key={index}>
                         <td>
-                            {smjer.marka}
+                            {automobil.marka}
                         </td>
                         <td>
-                            {smjer.model}
+                            {automobil.model}
                         </td> <td>
-                            {smjer.motor}
+                            {automobil.motor}
                         </td> <td>
-                            {smjer.vin}
+                            {automobil.vin}
                         </td> <td>
-                            {smjer.godiste}
+                            {automobil.godiste}
                         </td> <td>
-                            {smjer.kilometraza}
+                            {automobil.kilometraza}
                         </td>
                            
 
 
                         <td>
                             <Button
-                            onClick={()=>navigate(`/smjerovi/${smjer.sifra}`)}
+                            onClick={()=>navigate(`/automobili/${automobil.sifra}`)}
                             >Promjena</Button>
                             &nbsp;&nbsp;&nbsp;
                             <Button
                             variant="danger"
-                            onClick={()=>obrisi(smjer.sifra)}
+                            onClick={()=>obrisi(automobil.sifra)}
                             >Obriši</Button>
                         </td>
                     </tr>

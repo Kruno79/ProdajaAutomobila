@@ -26,7 +26,7 @@ export default function NavBarEdunova(){
                  
                     <NavDropdown title="Programi" id="basic-nav-dropdown">
                     <NavDropdown.Item
-                    onClick={()=>navigate(RouteNames.SMJER_PREGLED)}
+                    onClick={()=>navigate(RouteNames.AUTOMOBIL_PREGLED)}
                     >Automobili</NavDropdown.Item>
                     
                     </NavDropdown>
