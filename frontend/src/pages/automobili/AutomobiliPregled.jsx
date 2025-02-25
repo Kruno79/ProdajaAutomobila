@@ -86,13 +86,17 @@ export default function AutomobiliPregled(){
                         </td>
                         <td>
                             {automobil.model}
-                        </td> <td>
+                        </td> 
+                        <td>
                             {automobil.motor}
-                        </td> <td>
+                        </td> 
+                        <td>
                             {automobil.vin}
-                        </td> <td>
+                        </td> 
+                        <td>
                             {automobil.godiste}
-                        </td> <td>
+                        </td> 
+                        <td>
                             {automobil.kilometraza}
                         </td>
                            

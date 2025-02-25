@@ -6,4 +6,4 @@ export const RouteNames={
     AUTOMOBIL_PROMJENA: '/automobili/:sifra'
 }
 
-export const PRODUKCIJA='http://kruno1979-001-site1.mtempurl.com';
+export const PRODUKCIJA='https://kruno1979-001-site1.mtempurl.com';
