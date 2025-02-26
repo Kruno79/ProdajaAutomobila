@@ -83,6 +83,7 @@ namespace Backend.Controllers
                 automobilBaza.Motor = automobil.Motor;
                 automobilBaza.Vin = automobil.Vin;
                 automobilBaza.Godiste = automobil.Godiste;
+                automobilBaza.Kilometraza = automobil.Kilometraza;
 
                 _context.Automobili.Update(automobilBaza);
                 _context.SaveChanges();
