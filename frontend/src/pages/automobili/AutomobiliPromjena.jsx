@@ -10,18 +10,13 @@ export default function AutomobiliPromjena(){
 
     const navigate = useNavigate();
     const [automobil,setAutomobil] = useState({});
-    const [vaucer,setVaucer] = useState(false)
     const routeParams = useParams();
 
     async function dohvatiAutomobil(){
         const odgovor = await AutomobilService.getBySifra(routeParams.sifra)
 
-        if(odgovor.izvodiSeOd!=null){
-            odgovor.izvodiSeOd = moment.utc(odgovor.izvodiSeOd).format('yyyy-MM-DD')
-        }
-        
+  
         setAutomobil(odgovor)
-        //setVaucer(odgovor.vaucer)
     }
 
     useEffect(()=>{
@@ -44,10 +39,13 @@ export default function AutomobiliPromjena(){
 
         promjena(
             {
-                naziv: podaci.get('naziv'),
-                cijenaAutomobil: parseFloat(podaci.get('cijenaAutomobila')),
-                izvodiSeOd: moment.utc(podaci.get('izvodiSeOd')),
-                //vaucer: podaci.get('vaucer')=='on' ? true : false
+                marka: podaci.get('marka'),
+                model: podaci.get('model'),
+               
+                motor: podaci.get('motor'),
+                vin: podaci.get('vin'),
+                godiste: podaci.get('godiste'),
+                kilometraza: podaci.get('kilometraza')
             }
         );
     }
@@ -57,22 +55,40 @@ export default function AutomobiliPromjena(){
     Promjena automobila
     <Form onSubmit={odradiSubmit}>
 
-        <Form.Group controlId="naziv">
-            <Form.Label>Naziv</Form.Label>
-            <Form.Control type="text" name="naziv" required 
-            defaultValue={automobil.naziv}/>
+        <Form.Group controlId="marka">
+            <Form.Label>Marka</Form.Label>
+            <Form.Control type="text" name="marka" required 
+            defaultValue={automobil.marka}/>
         </Form.Group>
 
-        <Form.Group controlId="cijenaAutomobila">
-            <Form.Label>Cijena</Form.Label>
-            <Form.Control type="number" name="cijenaAutomobila" step={0.01} 
-            defaultValue={automobil.cijenaAutomobila}/>
+        <Form.Group controlId="model">
+            <Form.Label>Model</Form.Label>
+            <Form.Control type="text" name="model" step={0.01} 
+            defaultValue={automobil.model}/>
         </Form.Group>
 
-        <Form.Group controlId="izvodiSeOd">
-            <Form.Label>Izvodi se od</Form.Label>
-            <Form.Control type="date" name="izvodiSeOd" 
-            defaultValue={automobil.izvodiSeOd}/>
+        <Form.Group controlId="motor">
+            <Form.Label>Motor</Form.Label>
+            <Form.Control type="text" name="motor" 
+            defaultValue={automobil.motor}/>
+        </Form.Group>
+
+        <Form.Group controlId="vin">
+            <Form.Label>VIN</Form.Label>
+            <Form.Control type="text" name="vin" 
+            defaultValue={automobil.vin}/>
+        </Form.Group>
+
+        <Form.Group controlId="godiste">
+            <Form.Label>Godište</Form.Label>
+            <Form.Control type="number" name="godiste" 
+            defaultValue={automobil.godiste}/>
+        </Form.Group>
+
+        <Form.Group controlId="kilometraza">
+            <Form.Label>Kilometraža</Form.Label>
+            <Form.Control type="number" name="kilometraza" 
+            defaultValue={automobil.kilometraza}/>
         </Form.Group>
 
 

@@ -31,7 +31,7 @@ export default function AutomobiliDodaj(){
                 motor: podaci.get('motor'),
                 vin: podaci.get('vin'),
                 godiste: podaci.get('godiste'),
-                kilometraza: podaci.get('kilometraza'),
+                kilometraza: podaci.get('kilometraza')
             
                 
                
