@@ -7,7 +7,7 @@ import { PRODUKCIJA, RouteNames } from '../constants';
 
 
 
-export default function NavBarEdunova(){
+export default function NavBarProdajaAutomobila(){
 
     const navigate = useNavigate(); // ; u pravilu i ne treba
 
