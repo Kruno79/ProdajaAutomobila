@@ -88,7 +88,17 @@ export default function AutomobiliPregled(){
                             {automobil.model}
                         </td> 
                         <td>
+
+                            motor: &nbsp;
+                            <span style={{fontWeight:'bold'}}>
                             {automobil.motor}
+                            </span>
+                            
+                        
+                        
+                        
+                        
+                        
                         </td> 
                         <td>
                             {automobil.vin}
