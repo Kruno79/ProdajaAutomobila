@@ -93,7 +93,7 @@ export default function AutomobiliPregled(){
                         <td>
                             {automobil.vin}
                         </td> 
-                        <td>
+                        <td className="desno">
                             {automobil.godiste}
                         </td> 
                         <td>
